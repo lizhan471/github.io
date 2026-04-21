@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>李展博士 · 个人简历</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary:  #1a3a5c;
+  --accent:   #2e7eed;
+  --light-bg: #f4f7fb;
+  --border:   #d0dce8;
+  --text:     #1e2a38;
+  --muted:    #5a6a7a;
+  --tag-bg:   #e8f0fb;
+  --tag-fg:   #1a4a8c;
+}
+
+body {
+  font-family: "Noto Serif SC","Source Han Serif CN","SimSun",Georgia,serif;
+  font-size: 13.5px;
+  line-height: 1.72;
+  color: var(--text);
+  background: #dde3ed;
+  padding: 2rem 1rem 4rem;
+}
+
+/* ── 页面容器 ── */
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 4px 36px rgba(0,0,0,.14);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* ── Hero ── */
+.hero {
+  background: linear-gradient(135deg, #1a3a5c 0%, #0d2240 100%);
+  color: #fff;
+  padding: 2.6rem 3rem 2rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+  position: relative;
+}
+.hero::after {
+  content:'';
+  position:absolute; bottom:0; left:0; right:0;
+  height:4px;
+  background:linear-gradient(90deg,var(--accent),#60b0ff,var(--accent));
+}
+.hero-avatar {
+  width:90px; height:90px;
+  border-radius:50%;
+  background:rgba(255,255,255,.13);
+  border:3px solid rgba(255,255,255,.38);
+  display:flex; align-items:center; justify-content:center;
+  font-size:2.4rem; flex-shrink:0;
+}
+.hero-info { flex:1; }
+.hero-name { font-size:2rem; font-weight:700; letter-spacing:.06em; line-height:1.2; }
+.hero-subtitle { font-size:.9rem; color:rgba(255,255,255,.72); margin-top:.3rem; font-style:italic; }
+.hero-contacts {
+  margin-top:.9rem;
+  display:flex; flex-wrap:wrap; gap:.35rem .85rem;
+  font-size:.77rem;
+}
+.hero-contacts a, .hero-contacts span {
+  color:rgba(255,255,255,.83); text-decoration:none;
+  display:flex; align-items:center; gap:.22rem;
+}
+.hero-contacts a:hover { color:#fff; text-decoration:underline; }
+
+/* ── 双栏布局 ── */
+.body-wrap {
+  display: grid;
+  grid-template-columns: 1fr 290px;
+}
+
+.main-col {
+  padding: 1.8rem 2.2rem 2rem 2.5rem;
+  border-right: 1px solid var(--border);
+  min-width: 0;
+}
+
+.side-col {
+  padding: 1.8rem 1.6rem 2rem;
+  background: var(--light-bg);
+  min-width: 0;
+}
+
+/* ── 章节 ── */
+.section { margin-bottom: 1.6rem; }
+.section:last-child { margin-bottom: 0; }
+
+.section-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: .28rem;
+  margin-bottom: .9rem;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+.section-title .ico {
+  width:19px; height:19px;
+  background:var(--accent);
+  border-radius:3px;
+  display:inline-flex; align-items:center; justify-content:center;
+  color:#fff; font-size:.65rem; flex-shrink:0;
+}
+
+/* ── 时间线 ── */
+.tl-item {
+  position:relative;
+  padding-left:1.3rem;
+  margin-bottom:.8rem;
+}
+.tl-item::before {
+  content:'';
+  position:absolute; left:0; top:.56em;
+  width:8px; height:8px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 2px rgba(46,126,237,.2);
+}
+.tl-item:not(:last-child)::after {
+  content:'';
+  position:absolute; left:3px; top:1.1em;
+  width:2px; bottom:-0.75rem;
+  background:var(--border);
+}
+.tl-date { font-size:.72rem; color:var(--accent); font-weight:600; font-family:'Courier New',monospace; margin-bottom:.05rem; }
+.tl-role { font-weight:700; font-size:.86rem; }
+.tl-org  { font-size:.8rem; color:var(--muted); }
+
+/* ── 通用列表 ── */
+.ul {
+  list-style:none; padding:0;
+}
+.ul li {
+  padding-left:1.1rem;
+  position:relative;
+  margin-bottom:.35rem;
+  font-size:.8rem;
+  line-height:1.6;
+}
+.ul li::before {
+  content:'▸';
+  position:absolute; left:0;
+  color:var(--accent); font-size:.68rem; top:.15em;
+}
+
+/* ── 论文条目 ── */
+.pub {
+  margin-bottom:.6rem;
+  padding: .5rem .75rem;
+  border-left:3px solid var(--border);
+  border-radius:0 4px 4px 0;
+  background:#fafcff;
+  font-size:.76rem;
+  line-height:1.62;
+  transition: border-color .18s;
+}
+.pub:hover { border-left-color:var(--accent); }
+.pub .pt { font-weight:600; color:var(--text); }
+.pub .pa { color:var(--muted); font-size:.73rem; }
+.pub .pv { font-style:italic; color:var(--accent); font-size:.73rem; }
+.badge {
+  display:inline-block;
+  background:#fff3e0; color:#e65100;
+  font-size:.62rem; padding:.03rem .32rem;
+  border-radius:99px; font-weight:700;
+  margin-left:.28rem; vertical-align:middle;
+}
+.badge-ca {
+  background:#e3f2fd; color:#0d47a1;
+}
+
+/* ── 科研项目 ── */
+.proj {
+  margin-bottom:.6rem;
+  padding: .45rem .65rem;
+  border-left:3px solid var(--border);
+  border-radius:0 4px 4px 0;
+  background:#fafcff;
+  font-size:.77rem;
+  line-height:1.58;
+}
+.proj:hover { border-left-color:var(--accent); }
+.proj .pj-name { font-weight:600; color:var(--text); }
+.proj .pj-meta { color:var(--muted); font-size:.72rem; margin-top:.08rem; }
+.role-tag {
+  display:inline-block;
+  font-size:.66rem;
+  padding:.02rem .3rem;
+  border-radius:3px;
+  font-weight:700;
+  margin-left:.25rem;
+  vertical-align:middle;
+}
+.role-lead  { background:#e8f5e9; color:#2e7d32; }
+.role-co    { background:#e3f2fd; color:#1565c0; }
+.role-join  { background:#f3e5f5; color:#6a1b9a; }
+.role-bone  { background:#fff8e1; color:#e65100; }
+
+/* ── 侧栏 ── */
+.side-sec { margin-bottom:1.5rem; }
+.side-sec:last-child { margin-bottom:0; }
+.side-title {
+  font-size:.82rem;
+  font-weight:700;
+  color:var(--primary);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  border-bottom:1px solid var(--border);
+  padding-bottom:.22rem;
+  margin-bottom:.7rem;
+}
+
+.tag-cloud { display:flex; flex-wrap:wrap; gap:.35rem; margin-top:.4rem; }
+.tag {
+  background:var(--tag-bg); color:var(--tag-fg);
+  padding:.18rem .55rem;
+  border-radius:99px;
+  font-size:.7rem; font-weight:600;
+  border:1px solid #c5d9f5;
+}
+
+.info-row { display:flex; gap:.45rem; font-size:.77rem; margin-bottom:.32rem; align-items:flex-start; }
+.info-lbl { color:var(--muted); flex-shrink:0; min-width:48px; }
+.info-val { color:var(--text); flex:1; word-break:break-all; }
+
+.patent-item {
+  font-size:.77rem;
+  margin-bottom:.45rem;
+  padding-left:.95rem;
+  position:relative; line-height:1.55;
+}
+.patent-item::before { content:'©'; position:absolute; left:0; color:var(--accent); font-size:.68rem; }
+
+/* ── 评审期刊段落 ── */
+.review-block {
+  font-size:.74rem; line-height:1.65; color:var(--text);
+  background:#fafcff;
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:.55rem .7rem;
+}
+
+/* ── 打印 ── */
+@media print {
+  body { background:#fff; padding:0; }
+  .page { box-shadow:none; border-radius:0; }
+}
+@media (max-width:700px) {
+  .body-wrap { grid-template-columns:1fr; }
+  .main-col { border-right:none; border-bottom:1px solid var(--border); }
+  .hero { flex-direction:column; align-items:flex-start; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ════ HERO ════ -->
+<header class="hero">
+  <div class="hero-avatar">李</div>
+  <div class="hero-info">
+    <div class="hero-name">李 展 博士</div>
+    <div class="hero-subtitle">教授 &middot; 博士生导师 &middot; 机器人与人工智能 / 神经网络 / 康复工程</div>
+    <div class="hero-contacts">
+      <span>🏛 西南交通大学 城市轨道交通学院 / 智慧城市与交通学院</span>
+      <span>📍 犀浦校区3号教学楼31611 / 东部（国际）校区主楼1514</span>
+      <a href="mailto:zhan.li@swjtu.edu.cn">✉ zhan.li@swjtu.edu.cn</a>
+      <a href="mailto:lizhan471@163.com">✉ lizhan471@163.com</a>
+      <span>📱 18583381865</span>
+    </div>
+  </div>
+</header>
+
+<!-- ════ BODY ════ -->
+<div class="body-wrap">
+
+<!-- ──────────────── 主列 ──────────────── -->
+<main class="main-col">
+
+<!-- 工作经历 -->
+<section class="section">
+  <h2 class="section-title"><span class="ico">🏢</span>工作经历</h2>
+  <div class="tl-item">
+    <div class="tl-date">2024 &mdash; 至今</div>
+    <div class="tl-role">教授，博士生导师</div>
+    <div class="tl-org">西南交通大学 城市轨道交通学院 / 智慧城市与交通学院</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-date">2022 &mdash; 2025</div>
+    <div class="tl-role">讲座教授（兼职）</div>
+    <div class="tl-org">吉首大学</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-date">2021 &mdash; 2024</div>
+    <div class="tl-role">高级讲师，博士生导师</div>
+    <div class="tl-org">英国斯旺西大学 计算机系</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-date">2015 &mdash; 2021</div>
+    <div class="tl-role">讲师 / 副教授，硕士生导师</div>
+    <div class="tl-org">电子科技大学 自动化工程学院 / 机器人研究中心</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-date">2011 &mdash; 2014</div>
+    <div class="tl-role">助理研究员</div>
+    <div class="tl-org">法国国家自动化与计算机研究所 (INRIA)，蒙彼利埃大学信息、微电子和机器人实验室 (LIRMM)</div>
+  </div>
+</section>
+
+<!-- 教育经历 -->
+<section class="section">
+  <h2 class="section-title"><span class="ico">🎓</span>教育经历</h2>
+  <div class="tl-item">
+    <div class="tl-date">2011 &mdash; 2014</div>
+    <div class="tl-role">工学博士 &middot; 研究方向：康复机器人</div>
+    <div class="tl-org">法国蒙彼利埃大学 (University of Montpellier)</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-date">2009 &mdash; 2011</div>
+    <div class="tl-role">硕士</div>
+    <div class="tl-org">中山大学</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-date">2005 &mdash; 2009</div>
+    <div class="tl-role">学士</div>
+    <div class="tl-org">中山大学</div>
+  </div>
+</section>
+
+<!-- 教学经历 -->
+<section class="section">
+  <h2 class="section-title"><span class="ico">📚</span>教学课程</h2>
+  <ul class="ul">
+    <li>《人工智能与机器学习》，32学时，西南交通大学本科生课程</li>
+    <li>Computers Unplugged (CS-099), 30 hours, Computer Science Dept., Swansea University, 2021-2022 Semester II, <em>Module Coordinator</em></li>
+    <li>Big Data &amp; Machine Learning (CSC345/M45), 30 hours, Computer Science Dept., Swansea University, 2021-2022 Semester I, <em>Module Coordinator</em></li>
+    <li>《机器人概论》，16学时，电子科技大学本科生课程</li>
+    <li>《机器人》，32学时，电子科技大学本科生课程</li>
+    <li>《机器人操作系统》，32学时，电子科技大学本科生课程</li>
+    <li>《机器学习》，40学时，电子科技大学研究生课程</li>
+    <li>《工业机器人技术》，40学时，电子科技大学中山学院(2+2)本科生课程</li>
+    <li>《系统协同技术》，48学时，电子科技大学智能制造实验班本科生课程</li>
+    <li>《数值计算》，32学时，电子科技大学本科生课程</li>
+    <li>《C语言》，32学时，电子科技大学本科生课程</li>
+    <li>Master STIC pour la Sante (GMEE346), Travaux Pratiques (TP), December 2013 &amp; December 2012, 9h, University of Montpellier II</li>
+  </ul>
+</section>
+
+<!-- 教学项目与学科竞赛 -->
+<section class="section">
+  <h2 class="section-title"><span class="ico">🏆</span>教学项目与学科竞赛</h2>
+  <ul class="ul">
+    <li>人工智能+交通跨学科课程群，2018年电子科技大学跨学科和集成人才培养项目，参与</li>
+    <li>嵌入式系统设计-多旋翼飞行器，2018年电子科技大学跨学科和集成人才培养项目，参与</li>
+    <li>自主扫码和目标检测搬运机器人，2018年电子科技大学创新训练项目，指导老师</li>
+    <li>墙壁/黑板吸附自主运动机器人，2018年电子科技大学创新训练项目，指导老师</li>
+    <li>基于天牛须算法的机器人优化方法研究，2020年电子科技大学创新训练项目，指导老师</li>
+    <li><strong>第一届博实杯全国研究生机器人创新与设计大赛一等奖和三等奖</strong>，指导老师（获优秀指导老师奖）</li>
+    <li>第二届华为云人工智能大赛-无人车挑战杯<strong>季军</strong>，指导老师</li>
+    <li>电子科大-华为共建课程《机器人-智能系统与应用》，负责人</li>
+  </ul>
+</section>
+
+<!-- 科研项目 -->
+<section class="section">
+  <h2 class="section-title"><span class="ico">🔬</span>科研项目</h2>
+
+  <div class="proj">
+    <div class="pj-name">多模态下肢康复机器人关键技术及系统<span class="role-tag role-lead">主持</span></div>
+    <div class="pj-meta">横向开发项目 · 2025.11—2026.11</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">无人系统自主定位降落技术咨询<span class="role-tag role-lead">主持</span></div>
+    <div class="pj-meta">横向咨询项目 · 2025.12—2026.07</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">冗余度机器人稀疏抗噪控制关键技术研究<span class="role-tag role-lead">主持</span></div>
+    <div class="pj-meta">中央高校科研业务项目 · 2025.01—2026.12</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">扬华学者科研启动经费<span class="role-tag role-lead">主持</span></div>
+    <div class="pj-meta">西南交通大学 · 2024.04—至今</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">基于稀疏优化的冗余机器人低能耗及容噪运动规划研究<span class="role-tag role-lead">主持</span></div>
+    <div class="pj-meta">国家自然科学基金项目 · 2024.01—至今</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">多机器人跨层多指标神经动力学优化策略研究与应用<span class="role-tag role-co">合作方主持</span></div>
+    <div class="pj-meta">广东省科技计划国际科研合作项目（2023A050505008303）· 2023.11—至今</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">面向柔性机器人系统的环境端到驱动端的学习与控制方法研究<span class="role-tag role-lead">主持</span></div>
+    <div class="pj-meta">湖南省教育厅优秀青年项目 · 2023.01—至今</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">HEFCW Capital funds<span class="role-tag role-join">参与</span></div>
+    <div class="pj-meta">Swansea University · 2022.02—至今</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">Computer science department startup fund<span class="role-tag role-lead">主持</span></div>
+    <div class="pj-meta">Swansea University · 2021.10—至今</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">机器人平台研制<span class="role-tag role-lead">主持</span></div>
+    <div class="pj-meta">技术委托项目 · 2020.10—2021.5</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">基于深度学习的踝关节骨折术后早期康复智能减重装置研究<span class="role-tag role-lead">子课题主持</span></div>
+    <div class="pj-meta">四川省科技厅重点研发项目 · 2021.1—2021.12</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">防护型XXXX关键技术<span class="role-tag role-bone">主研</span></div>
+    <div class="pj-meta">2020.7—2021.12</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">基于多模态交互的人-机协作机制研究<span class="role-tag role-bone">主研</span></div>
+    <div class="pj-meta">技术委托项目 · 2019.12—2020.12</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">刚柔协同驱动外骨骼系统关键技术研究<span class="role-tag role-bone">主研</span></div>
+    <div class="pj-meta">中央高校面向重大需求类基本科研业务项目 · 2019.1—2021.12</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">面向康复应用的电刺激-可穿戴机器人共融系统关键技术研究<span class="role-tag role-lead">主持</span></div>
+    <div class="pj-meta">中央高校面向基础前沿类基本科研业务项目 · 2019.1—2021.12</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">康养康复外骨骼机器人关键技术研究及其示范应用<span class="role-tag role-bone">主研</span></div>
+    <div class="pj-meta">四川省科技计划重大专项 · 2018.9—2020.9</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">机械臂视觉采摘果蔬技术开发项目<span class="role-tag role-bone">主研</span></div>
+    <div class="pj-meta">技术委托项目 · 2018.9—2019.9</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">国外非传统外骨骼技术发展研究<span class="role-tag role-bone">主研</span></div>
+    <div class="pj-meta">技术委托项目 · 2019.3—2019.12</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">履带机器人ROS系统委托开发<span class="role-tag role-lead">主持</span></div>
+    <div class="pj-meta">技术委托项目 · 2018.1—2018.6</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">截瘫助行外骨骼系统关键技术研究及示范应用<span class="role-tag role-bone">课题骨干</span></div>
+    <div class="pj-meta">国家重点研发计划"智能机器人"重点专项（No.&nbsp;2017YFB1302300）· 2017.12—2019.11</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">基于变胞机构的多构态弹性驱动仿生跑跳关节的设计理论与试验研究<span class="role-tag role-join">参与</span></div>
+    <div class="pj-meta">国家自然科学基金（No.&nbsp;51705066）· 2018.1—2020.12</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">人车协作半物理仿真驾驶平台<span class="role-tag role-bone">主研</span></div>
+    <div class="pj-meta">技术委托项目 · 2017.6—2018.4</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">功能性电刺激在线辨识及闭环控制方法研究<span class="role-tag role-lead">主持</span></div>
+    <div class="pj-meta">国家自然科学基金（No.&nbsp;61603078）· 2017.1—2019.12</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">外骨骼机器人关键技术研究<span class="role-tag role-bone">主研</span></div>
+    <div class="pj-meta">四川省教育厅科技创新团队项目（No.&nbsp;2016TD0007）· 2016.3—2019.3</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">闭环功能性电刺激系统研究<span class="role-tag role-lead">主持</span></div>
+    <div class="pj-meta">电子科技大学中央高校基本业务费（新教师启动）· 2015.6—2017.5</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">FP7 EU EPIONE Project<span class="role-tag role-join">参与</span></div>
+    <div class="pj-meta">欧盟委员会 · 2014.1—2018.12</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">FP7 EU TIME Project<span class="role-tag role-join">参与</span></div>
+    <div class="pj-meta">欧盟委员会 · 2009.1—2012.12</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">French ANR SoHuSim Project<span class="role-tag role-join">参与</span></div>
+    <div class="pj-meta">法国科技研究署 · 2010.1—2014.12</div>
+  </div>
+  <div class="proj">
+    <div class="pj-name">时变问题求解的神经动力学新方法、模型及理论分析<span class="role-tag role-join">参与</span></div>
+    <div class="pj-meta">国家自然科学基金（No.&nbsp;61075121）· 2011.1—2013.12</div>
+  </div>
+</section>
+
+<!-- ── 书章节 ── -->
+<section class="section">
+  <h2 class="section-title"><span class="ico">📖</span>书中章节</h2>
+  <div class="pub">
+    <div class="pt">Bilateral estimation between muscle activation and joint moment with muscle synergy extraction via non-negative matrix factorization</div>
+    <div class="pa"><strong>Z Li</strong></div>
+    <div class="pv">in: <em>Advances in Medicine and Biology</em>, Volume 98, Nova Science Publishers, 2016.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Beetle Antennae Search Algorithm for the Motion Planning of Industrial Manipulator</div>
+    <div class="pa">J Cui, <strong>Z Li</strong></div>
+    <div class="pv">in: <em>Handbook of Nature-Inspired Optimization Algorithms: The State of the Art &ndash; Volume I</em>, Springer, 2021.</div>
+  </div>
+</section>
+
+<!-- ── SCI 期刊 ── -->
+<section class="section">
+  <h2 class="section-title"><span class="ico">📄</span>SCI 期刊论文</h2>
+
+  <div class="pub">
+    <div class="pt">An Enhanced Low-Computational-Complexity Predefined-Time Convergent Zeroing Neural Network for Constrained Time-Varying Quadratic Programming With Kinematic Control of Robotic Manipulator</div>
+    <div class="pa">J Yang, <strong>Z Li</strong> <span class="badge badge-ca">通讯作者</span></div>
+    <div class="pv">IEEE Transactions on Neural Networks and Learning Systems, 2026.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">A Smooth Time-Optimal Motion Control Strategy of Industrial Manipulator Subject to Hybrid Joint Constraints Synthesized by Low-Computational-Complexity Zeroing Neural Network</div>
+    <div class="pa">J Yang, <strong>Z Li</strong> <span class="badge badge-ca">通讯作者</span></div>
+    <div class="pv">IEEE Transactions on Industrial Electronics, 2026.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Enhanced Zeroing Neural Network for Kinematic Control of Surgical Manipulator under RCM Constraints</div>
+    <div class="pa">J Guo, et al., <strong>Z Li</strong> <span class="badge badge-ca">通讯作者</span></div>
+    <div class="pv">IEEE Transactions on Systems, Man, and Cybernetics: Systems, 2026.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Low-Computational-Complexity Zeroing Neural Network for Resisting Multiple-Type Noise with Solution of Constrained Quadratic Programming</div>
+    <div class="pa">J Yang, <strong>Z Li</strong> <span class="badge badge-ca">通讯作者</span></div>
+    <div class="pv">Computational Intelligence, 2026.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Design and Analysis of Gradient-Based Differential Neural Network for Solving Time-Varying Quadratic Problems with Inequality Constraint</div>
+    <div class="pa">Y Zeng, C Hua, B Liao, <strong>Z Li</strong> <span class="badge badge-ca">通讯作者</span></div>
+    <div class="pv">Neural Networks, 192, 107911, 2025.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Motion control of exoskeleton arm with potential energy minimization</div>
+    <div class="pa">B Liao, T Wang, K Yan, L Shen, <strong>Z Li</strong>, P Yin <span class="badge badge-ca">通讯作者</span></div>
+    <div class="pv">Control Engineering Practice, 164, 106481, 2025.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">A predefined-time convergent low-computational-complexity zeroing neural network for equality-constrained time-varying quadratic programming</div>
+    <div class="pa">J Yang, <strong>Z Li</strong> <span class="badge badge-ca">通讯作者</span></div>
+    <div class="pv">Expert Systems with Applications, 293, 128692, 2025.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Robust Time-Optimal Kinematic Control of Robotic Manipulators Based on Recurrent Neural Network Against Harmonic Noises</div>
+    <div class="pa">Y Kuang, S Li, <strong>Z Li</strong> <span class="badge badge-ca">通讯作者</span></div>
+    <div class="pv">Actuators, 14(5), 213, 2025.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Gradient-based differential neural network to time-varying constrained quadratic programming</div>
+    <div class="pa">B Liao, Y Zeng, T Wang, <strong>Z Li</strong> <span class="badge badge-ca">通讯作者</span></div>
+    <div class="pv">Expert Systems with Applications, 264, 125893, 2025.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Time-optimal constrained kinematic control of robotic manipulators by recurrent neural network</div>
+    <div class="pa"><strong>Z Li</strong>, S Li</div>
+    <div class="pv">Expert Systems with Applications, 257, 124994, 2024.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">A Comprehensive Review of Recent Advances on Intelligence Algorithms and Information Engineering Applications</div>
+    <div class="pa">Y Zeng, B Liao, <strong>Z Li</strong>, C Hua, S Li</div>
+    <div class="pv">IEEE Access, 12, 135886&ndash;135912, 2024.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">A High Order Integration Enhanced Zeroing Neural Network for Time-Varying Convex Quadratic Program Against Nonlinear Noise</div>
+    <div class="pa">J Li, Y Rong, <strong>Z Li</strong>, S Li, L Qu</div>
+    <div class="pv">IEEE Access, 12, 22099&ndash;22109, 2024.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">A Novel Zeroing Neural Network for Time-varying Matrix Pseudoinversion in the Presence of Linear Noises</div>
+    <div class="pa">J Li, L Qu, Y Zhu, <strong>Z Li</strong>, B Liao</div>
+    <div class="pv">Tsinghua Science and Technology, 2024.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">A Sparse Neural Network-Based Control Method for Saturated Nonlinear Affine Systems</div>
+    <div class="pa">J Zhang, B Yin, J Huo, H Guo, <strong>Z Li</strong></div>
+    <div class="pv">Actuators, 13(6), 204, 2024.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Fault-Tolerant Kinematic Control of Redundant Manipulators with Joint Failures under Joint Velocity Disturbances</div>
+    <div class="pa"><strong>Z Li</strong>, J Cui</div>
+    <div class="pv">IEEE Transactions on Circuits and Systems II: Express Briefs, 2023. DOI:&nbsp;10.1109/TCSII.2023.3332262</div>
+  </div>
+  <div class="pub">
+    <div class="pt">A Novel Zeroing Neural Network for Solving Time-varying Quadratic Matrix Equation Against Linear Noises</div>
+    <div class="pa">J Li, L Qu, <strong>Z Li</strong>, B Liao, S Li, Y Rong, Z Liu, Z Liu, K Lin</div>
+    <div class="pv">Mathematics, 11(2), 475, 2023.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">An end-to-end real-time lightweight network for the joint segmentation of optic disc and optic cup on fundus images</div>
+    <div class="pa">Z Liu, Y Chen, X Xiang, <strong>Z Li</strong>, B Liao, J Li</div>
+    <div class="pv">Mathematics, 10(22), 1&ndash;17, 2022.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Recursive Recurrent Neural Network: A Novel Model for Manipulator Control with Different Level of Physical Constraints</div>
+    <div class="pa"><strong>Z Li</strong>, S Li</div>
+    <div class="pv">CAAI Transactions on Intelligence Technology, 2022.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">A Sparsity-based Method for Fault-Tolerant Manipulation of a Redundant Robot</div>
+    <div class="pa"><strong>Z Li</strong>, et al.</div>
+    <div class="pv">Robotica, 2022.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Model-based Recurrent Neural Network for Redundancy Resolution of Manipulator with Remote Center of Motion Constraints</div>
+    <div class="pa"><strong>Z Li</strong>, S Li</div>
+    <div class="pv">International Journal of Systems Science, 2022.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">A Discrete Model-Free Scheme for Fault Tolerant Tracking Control of Redundant Manipulators</div>
+    <div class="pa">N Tan, C Zhong, Y Peng, <strong>Z Li</strong>, et al.</div>
+    <div class="pv">IEEE Transactions on Industrial Informatics, 2022.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Fault-tolerant Motion Planning and Generation of Quadruped Robots Synthesised by Posture Optimization and Whole-Body Control</div>
+    <div class="pa">J Cui, <strong>Z Li</strong>, et al.</div>
+    <div class="pv">Complex and Intelligent Systems, 2022.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Kinematic Control of Manipulator with Remote Center of Motion Constraints Synthesised by a Simplified Recurrent Neural Network</div>
+    <div class="pa"><strong>Z Li</strong>, S Li</div>
+    <div class="pv">Neural Processing Letters, 2021.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Neural Network Model based Control for Manipulator: An Autoencoder Perspective</div>
+    <div class="pa"><strong>Z Li</strong>, S Li</div>
+    <div class="pv">IEEE Transactions on Neural Networks and Learning Systems, 2021.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">An L1-norm based Optimization Method for Sparse Redundancy Resolution of Robotic Manipulators</div>
+    <div class="pa"><strong>Z Li</strong>, S Li</div>
+    <div class="pv">IEEE Transactions on Circuits and Systems II: Express Briefs, 69(2), 469&ndash;473, 2022.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Enhanced Beetle Antennae Search with Zeroing Neural Network for Online Solution of Constrained Optimization</div>
+    <div class="pa">A T Khan, X Cao, S Li, <strong>Z Li</strong></div>
+    <div class="pv">Neurocomputing, 447, 294&ndash;306, 2021.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">A Sparse Optimization based Control Method for Manipulator with Simultaneous Potential Energy Minimization</div>
+    <div class="pa"><strong>Z Li</strong>, S Li</div>
+    <div class="pv">IEEE Transactions on Circuits and Systems II: Express Briefs, 68(6), 2062&ndash;2066, 2021.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Standing Balance Maintenance by Virtual Suspension Model Control for Legged Robot</div>
+    <div class="pa">J Cui, <strong>Z Li</strong>, Y Kuang, H Cheng</div>
+    <div class="pv">Advances in Mechanical Engineering, 12(9), 2020.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Motion Planning of Redundant Manipulator with Variable Joint Velocity Limit Based on Beetle Antennae Search Algorithm</div>
+    <div class="pa">Y Cheng, C Li, S Li, <strong>Z Li</strong></div>
+    <div class="pv">IEEE Access, 8, 138788&ndash;138799, 2020.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Saturated PI Control for Nonlinear System with Provable Convergence: An Optimization Perspective</div>
+    <div class="pa"><strong>Z Li</strong>, S Li</div>
+    <div class="pv">IEEE Transactions on Circuits and Systems II: Express Briefs, 68(2), 2021. <span class="badge">ESI 高被引</span></div>
+  </div>
+  <div class="pub">
+    <div class="pt">Zeroing Dynamics Method for Motion Control of Industrial Upper-limb Exoskeleton System with Minimal Potential Energy Modulation</div>
+    <div class="pa"><strong>Z Li</strong>, W Zuo, S Li</div>
+    <div class="pv">Measurement, 163(15), 107964, 2020.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">A Fault-Tolerant Method for Motion Planning of Industrial Redundant Manipulator</div>
+    <div class="pa"><strong>Z Li</strong>, C Li, S Li, X Cao</div>
+    <div class="pv">IEEE Transactions on Industrial Informatics, 16(12), 2020. <span class="badge">ESI 热点</span></div>
+  </div>
+  <div class="pub">
+    <div class="pt">Robust control of two-link manipulator with disturbance torque and time-varying mass loads</div>
+    <div class="pa"><strong>Z Li</strong>, D Huang</div>
+    <div class="pv">Transactions of the Institute of Measurement and Control, 42(9), 1667&ndash;1674, 2020.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">A New Multi-Agent Reinforcement Learning Method based on Evolving Dynamic Correlation Matrix</div>
+    <div class="pa">X Gan, H Guo, <strong>Z Li</strong></div>
+    <div class="pv">IEEE Access, 7, 162127&ndash;162138, 2019.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Muscle Synergy Alteration of Human during Walking with Lower Limb Exoskeleton</div>
+    <div class="pa"><strong>Z Li</strong>, et al.</div>
+    <div class="pv">Frontiers in Neuroscience, 2019.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">A method for controlling parallel and series RLC circuits with time-varying resistance, inductance and capacitance</div>
+    <div class="pa"><strong>Z Li</strong>, Z Yin</div>
+    <div class="pv">Circuits, Systems, and Signal Processing, 37(6), 2629&ndash;2638, 2018.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Zhang Dynamics based Tracking Control of Knee Exoskeleton with Time-dependent Inertial and Viscous Parameters</div>
+    <div class="pa"><strong>Z Li</strong>, Z Yin</div>
+    <div class="pv">International Journal of Control, Automation and Systems, 16(2), 904&ndash;911, 2018.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Real-time closed-loop FES control of muscle activation with evoked EMG feedback for spinal cord injured patients</div>
+    <div class="pa"><strong>Z Li</strong>, et al.</div>
+    <div class="pv">International Journal of Neural Systems, 28(6), 1750063, 2018.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Tracking Control of Time-varying Knee Exoskeleton Disturbed by Interaction Torque</div>
+    <div class="pa"><strong>Z Li</strong>, et al.</div>
+    <div class="pv">ISA Transactions, 71(2), 458&ndash;466, 2017.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">General Recurrent Neural Network for Solving Generalized Linear Matrix Equation</div>
+    <div class="pa"><strong>Z Li</strong>, H Cheng, H Guo</div>
+    <div class="pv">Complexity, 2017.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Compliant Training Control of Ankle Joint by Exoskeleton with Human EMG-Torque Interface</div>
+    <div class="pa"><strong>Z Li</strong>, H Cheng, H Guo, X Sun</div>
+    <div class="pv">Assembly Automation, 37(3), 349&ndash;355, 2017.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Real-Time Estimation of FES-induced Joint Torque with Evoked EMG &mdash; Application to Spinal Cord Injured Patients</div>
+    <div class="pa"><strong>Z Li</strong>, et al.</div>
+    <div class="pv">Journal of NeuroEngineering and Rehabilitation, 13(60), 1&ndash;11, 2016.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Extended Wang neural network for online solving a set of linear equations</div>
+    <div class="pa"><strong>Z Li</strong>, Z Yin</div>
+    <div class="pv">IET Electronics Letters, 52(12), 1001&ndash;1003, 2016. <em>(Feature Article)</em></div>
+  </div>
+  <div class="pub">
+    <div class="pt">Inverse estimation of multiple muscle activations from joint moment with muscle synergy extraction</div>
+    <div class="pa"><strong>Z Li</strong>, D Guiraud, M Hayashibe</div>
+    <div class="pv">IEEE Journal of Biomedical and Health Informatics, 19(1), 64&ndash;73, 2015.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Muscle fatigue tracking with evoked EMG via recurrent neural network: toward personalized neuroprosthetics</div>
+    <div class="pa"><strong>Z Li</strong>, M Hayashibe, C Fattal, D Guiraud</div>
+    <div class="pv">IEEE Computational Intelligence Magazine, 9(2), 38&ndash;46, 2014.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Common nature of learning between Back-Propagation and Hopfield-type neural networks for generalized matrix inversion with simplified models</div>
+    <div class="pa">Y Zhang, D Guo, <strong>Z Li</strong></div>
+    <div class="pv">IEEE Transactions on Neural Networks and Learning Systems, 24(4), 579&ndash;592, 2013.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Different Zhang functions leading to different Zhang-dynamics models illustrated via time-varying reciprocal solving</div>
+    <div class="pa">Y Zhang, F Li, Y Yang, <strong>Z Li</strong></div>
+    <div class="pv">Applied Mathematical Modelling, 36(9), 4502&ndash;4511, 2012.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Complex-valued Zhang neural network for online complex-valued time-varying matrix inversion</div>
+    <div class="pa">Y Zhang, <strong>Z Li</strong>, K Li</div>
+    <div class="pv">Applied Mathematics and Computation, 217(24), 10066&ndash;10073, 2011.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Continuous and discrete time Zhang dynamics for time-varying 4th root finding</div>
+    <div class="pa">Y Zhang, L Xiao, G Ruan, <strong>Z Li</strong></div>
+    <div class="pv">Numerical Algorithms, 57(1), 35&ndash;51, 2011.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Improved Zhang neural network model and its solution of time-varying generalized linear matrix equations</div>
+    <div class="pa"><strong>Z Li</strong>, Y Zhang</div>
+    <div class="pv">Expert Systems with Applications, 37(10), 7213&ndash;7218, 2010.</div>
+  </div>
+  <div class="pub">
+    <div class="pt">Zhang neural network for online solution of time-varying convex quadratic program subject to time-varying linear-equality constraints</div>
+    <div class="pa">Y Zhang, <strong>Z Li</strong></div>
+    <div class="pv">Physics Letters A, 373(18), 1639&ndash;1643, 2009.</div>
+  </div>
+</section>
+
+<!-- ── 会议论文 ── -->
+<section class="section">
+  <h2 class="section-title"><span class="ico">🗣</span>会议论文</h2>
+
+  <div class="pub">
+    <div class="pa"><strong>Z Li</strong>, Z Yin</div>
+    <div class="pt">A Method for FES Control of Human Knee Joint with Time-dependent Model Parameters</div>
+    <div class="pv">2019 IEEE ICCA, Edinburgh, UK, 2019.</div>
+  </div>
+  <div class="pub">
+    <div class="pa">W Ma, H Cheng, <strong>Z Li</strong>, J Qiu</div>
+    <div class="pt">Time-varying Stiffness Tracking Control of Knee Exoskeleton</div>
+    <div class="pv">2017 IEEE ROBIO, Macau, 2017.</div>
+  </div>
+  <div class="pub">
+    <div class="pa"><strong>Z Li</strong>, Z Yin</div>
+    <div class="pt">Tracking Control of Knee Exoskeleton with Time-Varying Model Coefficients under Compliant Interaction</div>
+    <div class="pv">2017 CCC, Dalian, 2017.</div>
+  </div>
+  <div class="pub">
+    <div class="pa"><strong>Z Li</strong>, Z Yin, H Cheng</div>
+    <div class="pt">Tracking Control of Knee Exoskeleton System with Time-Dependent Inertial and Viscous Parameters</div>
+    <div class="pv">2017 IFAC WC, Toulouse, France, 2017.</div>
+  </div>
+  <div class="pub">
+    <div class="pa"><strong>Z Li</strong>, Z Yin</div>
+    <div class="pt">Position Tracking Control of Mass Spring Damper System with Time-Varying Coefficients</div>
+    <div class="pv">2017 CCDC, Chongqing, 2017.</div>
+  </div>
+  <div class="pub">
+    <div class="pa"><strong>Z Li</strong>, H Cheng, Z Yin</div>
+    <div class="pt">Muscle Synergy Analysis of a Set of Lower Extremity Movements in Quiet Standing Scenario: A Preliminary Study</div>
+    <div class="pv">2016 IEEE International Conference on Mechatronics and Automation, Harbin, 2016.</div>
+  </div>
+  <div class="pub">
+    <div class="pa"><strong>Z Li</strong>, D Guiraud, D Andreu, C Fattal, A Gelis, M Hayashibe</div>
+    <div class="pt">A hybrid functional electrical stimulation for real-time estimation joint torque and closed-loop control of muscle activation</div>
+    <div class="pv">2016 IFESS Conference, La Grande-Motte, France, 2016.</div>
+  </div>
+  <div class="pub">
+    <div class="pa"><strong>Z Li</strong>, J Guo, D Huang</div>
+    <div class="pt">Bidirectional joint torque prediction with EMG of multiple channels: both agonist and antagonist muscles are necessary</div>
+    <div class="pv">2016 CCDC, Yinchuan, 2016.</div>
+  </div>
+  <div class="pub">
+    <div class="pa"><strong>Z Li</strong>, M Hayashibe, D Andreu, D Guiraud</div>
+    <div class="pt">Real-time closed-loop control of muscle activation with evoked EMG feedback</div>
+    <div class="pv">2015 IEEE EMBS Conference on Neural Engineering, Montpellier, France, 2015.</div>
+  </div>
+  <div class="pub">
+    <div class="pa"><strong>Z Li</strong>, M Hayashibe, D Andreu, D Guiraud</div>
+    <div class="pt">A system for real-time estimation of joint torque with evoked EMG under electrical stimulation</div>
+    <div class="pv">2nd International Conference on NeuroRehabilitation, Aalborg, Denmark, 2014.</div>
+  </div>
+  <div class="pub">
+    <div class="pa">L Jin, H Tan, Z Luo, <strong>Z Li</strong>, Y Zhang</div>
+    <div class="pt">Z-Type Model for Real-Time Solution of Complex ZLE</div>
+    <div class="pv">11th International Symposium on Neural Networks, Hong Kong, 2014.</div>
+  </div>
+  <div class="pub">
+    <div class="pa"><strong>Z Li</strong>, M Hayashibe, D Guiraud</div>
+    <div class="pt">Forward estimation of joint torque from EMG signal through muscle synergy combinations</div>
+    <div class="pv">6th International IEEE EMBS Conference on Neural Engineering, San Diego, USA, 2013.</div>
+  </div>
+  <div class="pub">
+    <div class="pa"><strong>Z Li</strong>, M Hayashibe, D Guiraud</div>
+    <div class="pt">Inverse estimation of muscle activations from joint torque via local multiple regression</div>
+    <div class="pv">35th Annual International Conference of IEEE EMBS, Osaka, Japan, 2013.</div>
+  </div>
+  <div class="pub">
+    <div class="pa"><strong>Z Li</strong>, M Hayashibe, D Guiraud</div>
+    <div class="pt">Inverse estimation of multiple muscle activations under isokinetic condition</div>
+    <div class="pv">2012 International Conference on NeuroRehabilitation, 347&ndash;351, Toledo, Spain, 2012.</div>
+  </div>
+  <div class="pub">
+    <div class="pa"><strong>Z Li</strong>, M Hayashibe, Q Zhang, D Guiraud</div>
+    <div class="pt">FES-induced muscular torque prediction with evoked EMG synthesized by NARX-type recurrent neural network</div>
+    <div class="pv">2012 IEEE/RSJ IROS, 2198&ndash;2203, Vilamoura, Portugal, 2012.</div>
+  </div>
+  <div class="pub">
+    <div class="pa">H Wu, F Li, <strong>Z Li</strong>, Y Zhang</div>
+    <div class="pt">Zhang fractals yielded via solving nonlinear equations by discrete-time complex-valued ZD</div>
+    <div class="pv">2012 IEEE International Conference on Automation and Logistics, 1&ndash;6, 2012.</div>
+  </div>
+  <div class="pub">
+    <div class="pa"><strong>Z Li</strong>, Y Zhang</div>
+    <div class="pt">Time-varying quadratic programming by Zhang neural network equipped with a time-varying design parameter &gamma;(t)</div>
+    <div class="pv">Lecture Notes in Computer Science, vol.&nbsp;6675, 101&ndash;108, 2011.</div>
+  </div>
+  <div class="pub">
+    <div class="pa">Y Zhang, Z Ke, K Li, <strong>Z Li</strong></div>
+    <div class="pt">Zhang dynamics with modified error-functions for online solution of nonlinear equations so as to avoid local minima</div>
+    <div class="pv">2011 Chinese Control and Decision Conference, 3872&ndash;3877, 2011.</div>
+  </div>
+  <div class="pub">
+    <div class="pa">Y Zhang, Z Ke, <strong>Z Li</strong>, D Guo</div>
+    <div class="pt">Comparison on continuous-time Zhang dynamics and Newton-Raphson iteration for online solution of nonlinear equations</div>
+    <div class="pv">Lecture Notes in Computer Science, vol.&nbsp;6675, 392&ndash;402, 2011.</div>
+  </div>
+  <div class="pub">
+    <div class="pa"><strong>Z Li</strong></div>
+    <div class="pt">Accelerated consensus protocol for distributed networked multi-agent system with interconnected topology: a specific architecture</div>
+    <div class="pv">2009 International Conference on Information Engineering and Computer Science, 311&ndash;314, Wuhan, China, 2009.</div>
+  </div>
+  <div class="pub">
+    <div class="pa">Y Zhang, X Li, <strong>Z Li</strong></div>
+    <div class="pt">Modeling and verification of Zhang neural networks for online solution of time-varying quadratic minimization and programming</div>
+    <div class="pv">Lecture Notes in Computer Science, vol.&nbsp;5821, 101&ndash;110, 2009.</div>
+  </div>
+  <div class="pub">
+    <div class="pa">Y Zhang, Y Shi, B Cai, <strong>Z Li</strong>, et al.</div>
+    <div class="pt">Common nature of learning between BP and Hopfield-Type neural networks for convex quadratic minimization with simplified network models</div>
+    <div class="pv">2009 IEEE International Conference on Mechatronics and Automation, 2500&ndash;2505, Changchun, China, 2009.</div>
+  </div>
+  <div class="pub">
+    <div class="pa">Y Zhang, <strong>Z Li</strong>, C Yi, K Chen</div>
+    <div class="pt">Zhang neural network versus gradient neural network for online time-varying quadratic function minimization</div>
+    <div class="pv">Lecture Notes in Artificial Intelligence, vol.&nbsp;5227, 807&ndash;814, 2008.</div>
+  </div>
+  <div class="pub">
+    <div class="pa">Y Zhang, <strong>Z Li</strong>, K Chen, B Cai</div>
+    <div class="pt">Common nature of learning exemplified by BP and Hopfield neural networks for solving online a system of linear equations</div>
+    <div class="pv">2008 IEEE International Conference on Networking, Sensing and Control, 832&ndash;836, Sanya, China, 2008.</div>
+  </div>
+</section>
+
+<!-- 授权专利 -->
+<section class="section">
+  <h2 class="section-title"><span class="ico">💡</span>授权专利</h2>
+  <div class="patent-item">李展，程洪，殷紫光，<strong>一种肌肉协同模式下的多通道功能性电刺激方法与系统</strong>，授权号：ZL201610006267.0</div>
+  <div class="patent-item">程洪，王富奎，李展等，<strong>一种运动想象模式脑机接口触发的下肢外骨骼训练方法与系统</strong>，授权号：ZL201610049316.9</div>
+  <div class="patent-item">程洪，李鹏，黄瑞，李展，<strong>一种用于下肢外骨骼的分布式液压控制系统</strong>，授权号：ZL201510356123.3</div>
+  <div class="patent-item">周呈科，邱静，程洪，李展等，<strong>一种上肢外骨骼机器人4自由度前臂</strong>，授权号：ZL201711102641.8</div>
+  <div class="patent-item">谭虹，李展等，<strong>基于GSM的智能密码锁</strong>，授权号：ZL202021542487.3</div>
+</section>
+
+</main><!-- /main-col -->
+
+<!-- ──────────────── 侧列 ──────────────── -->
+<aside class="side-col">
+
+  <!-- 研究兴趣 -->
+  <div class="side-sec">
+    <div class="side-title">研究兴趣</div>
+    <div class="tag-cloud">
+      <span class="tag">机器人学</span>
+      <span class="tag">人工智能</span>
+      <span class="tag">神经网络</span>
+      <span class="tag">康复工程</span>
+      <span class="tag">运动规划</span>
+      <span class="tag">冗余机器人</span>
+      <span class="tag">时变矩阵</span>
+      <span class="tag">功能性电刺激</span>
+      <span class="tag">外骨骼</span>
+      <span class="tag">稀疏优化</span>
+      <span class="tag">ZNN 模型</span>
+      <span class="tag">深度学习</span>
+    </div>
+  </div>
+
+  <!-- 期刊编辑 -->
+  <div class="side-sec">
+    <div class="side-title">期刊编辑</div>
+    <ul class="ul">
+      <li>PLOS ONE — Academic Editor, Editorial Board Member</li>
+      <li>Frontiers in Robotics and AI — Associate Editor</li>
+      <li>Neural Computing and Applications — Editorial Board Member</li>
+      <li>Journal of Applied Mathematics — Editorial Board Member</li>
+      <li>Discover Robotics — Editorial Board Member</li>
+      <li>Sensors (Sensors and Robotics) — Editorial Board Member</li>
+      <li>EAI Endorsed Transactions on AI and Robotics — Editorial Board Member</li>
+      <li>Frontiers in Neurorobotics — Guest Editor</li>
+      <li>Frontiers in Neuroscience — Guest Editor</li>
+      <li>Journal of Healthcare Engineering — Guest Editor</li>
+      <li>Applied Sciences — Guest Editor</li>
+      <li>Mathematical Problems in Engineering — Guest Editor</li>
+      <li>Advanced Control for Applications — Guest Editor</li>
+      <li>《兰州大学学报（自然科学版）》"人工智能理论与应用"专栏主持人</li>
+      <li>Frontiers in Medical Technology-Medtech Data Analytics — Review Editor</li>
+      <li>Frontiers in Robotics and AI-Robot Learning and Evolution — Review Editor</li>
+    </ul>
+  </div>
+
+  <!-- 期刊评审 -->
+  <div class="side-sec">
+    <div class="side-title">期刊论文评审</div>
+    <div class="review-block">
+      IEEE T-NSRE, IEEE T-NNLS, IEEE T-AC, IEEE/ASME T-Mech, IEEE TII, IEEE TIE, IEEE T-Cyb, IEEE T-BME, IEEE TASE, IEEE T-FS, IEEE T-CDS, IEEE T-HMS, IEEE T-SMC:S, IEEE T-VT, IEEE TCSII, IEEE JBHI, IEEE T-ETCI, IEEE T-CE, IEEE Systems Journal, Journal of Field Robotics, Journal of Neural Engineering, Neural Networks, Robotics and Autonomous Systems, Artificial Intelligence Review, Expert Systems with Applications, ISA Transactions, IEEE RA-L, Medical &amp; Biological Engineering &amp; Computing, Measurement, Knowledge-based Systems, Ocean Engineering, Assembly Automation, IJSS, CAAI Transactions on Intelligence Technology, Computational Intelligence, PLOS One, Frontiers in Neurorobotics, Neural Processing Letters, IET Electronics Letters, Intelligent Service Robotics, IJIS, IJIRA, Tsinghua Science and Technology, IEEE Access, Complexity, Mathematical Problems in Engineering, Frontiers in Artificial Intelligence, Actuators, ROBOMECH Journal, IEEE Open Journal of Circuits and Systems, ACM T-HRI, Energy Systems, Machines, 自动化学报，通信学报，电子学报，机器人，控制工程
+    </div>
+  </div>
+
+  <!-- 会议评审 -->
+  <div class="side-sec">
+    <div class="side-title">会议论文评审</div>
+    <div class="review-block">
+      ISNN 2009/2011/2012, EMBC 2013-2022, CCDC 2014/2018-2020, IFESS 2014/2016, NER 2015/2017/2019/2021, ICRA 2017/2021/2022/2023, ITSC 2017, ICIA 2017/2018, ICIRA 2017/2021, CCC 2018-2020, IROS 2020, ACC 2021/2022, CDC 2021
+    </div>
+  </div>
+
+  <!-- 项目评审 -->
+  <div class="side-sec">
+    <div class="side-title">项目评审</div>
+    <ul class="ul">
+      <li>英国工程和自然科学研究委员会（EPSRC）项目</li>
+      <li>中国国家自然科学基金（NSFC）项目</li>
+      <li>广东省科技厅人工智能旗舰重大项目</li>
+      <li>教育部长江学者青年项目</li>
+      <li>绵阳市科技重大进展项目</li>
+      <li>广西省人工智能十大标杆应用场景典型案例</li>
+    </ul>
+  </div>
+
+  <!-- 会议组织 -->
+  <div class="side-sec">
+    <div class="side-title">会议组织</div>
+    <ul class="ul">
+      <li>2015中国社会机器人高峰论坛，电子科技大学，组织委员会委员</li>
+      <li>2016第一届全国医用机器人和医学智能化大会研发会场，组织委员会委员</li>
+      <li>2017第二届全国医学智能大会暨"一带一路"国际康复研讨会，组织委员会委员</li>
+      <li>电子科技大学-蒙彼利埃大学双边学术研讨会，组织协主席</li>
+      <li>2024智能机器人与自动控制国际学术会议（IRAC 2024），出版主席</li>
+      <li>ICIA 2016 / 2017 / 2018，Program Committee Member</li>
+      <li>IEEE ROBIO 2021，Technical Program Committee</li>
+      <li>2021 IEEE ICARM，Associate Editor (AE)</li>
+    </ul>
+  </div>
+
+  <!-- 专委会 -->
+  <div class="side-sec">
+    <div class="side-title">专委会</div>
+    <ul class="ul">
+      <li>IEEE Technical Committee Member on Collaborative Automation for Flexible Manufacturing</li>
+    </ul>
+  </div>
+
+  <!-- 邀请报告 -->
+  <div class="side-sec">
+    <div class="side-title">邀请报告</div>
+    <ul class="ul">
+      <li>Fault-tolerant motion planning with fault diagnosis for redundant manipulators, Sussex University, U.K., 2021.12.10</li>
+      <li>Task-constrained and fault-tolerant motion planning and control for redundant manipulators, Swansea University Computational Foundry, U.K., 2021.11.25</li>
+      <li>面向鲁棒神经接口的外骨骼机器人，2016年全国医用机器人和医学智能化大会，成都</li>
+      <li>Invited Speaker, 2023 3rd International Conference on Computer, Control and Robotics</li>
+    </ul>
+  </div>
+
+  <!-- 博士论文答辩委员会 -->
+  <div class="side-sec">
+    <div class="side-title">博士论文答辩委员会</div>
+    <ul class="ul">
+      <li>香港理工大学，2022年8月</li>
+      <li>斯旺西大学，2022年12月</li>
+    </ul>
+  </div>
+
+  <!-- 外部评审 -->
+  <div class="side-sec">
+    <div class="side-title">外部评审</div>
+    <ul class="ul">
+      <li>中国教育部学位与研究生教育发展中心论文评审专家</li>
+      <li>第2&ndash;4届中国研究生机器人创新设计大赛初赛评审专家</li>
+    </ul>
+  </div>
+
+  <!-- 行政兼职 -->
+  <div class="side-sec">
+    <div class="side-title">行政兼职</div>
+    <ul class="ul">
+      <li>Co-lead Assessment Officer, Computer Science Dept., Swansea University</li>
+      <li>Short-list and Interview Panel Member of Lectureship Post on Robotics and AI, Computer Science Dept., Swansea University</li>
+      <li>西南交通大学交叉学科职称评审委员会成员</li>
+    </ul>
+  </div>
+
+</aside><!-- /side-col -->
+</div><!-- /body-wrap -->
+</div><!-- /page -->
+</body>
+</html>
